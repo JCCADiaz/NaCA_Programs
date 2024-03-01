@@ -2,6 +2,7 @@
 Program for data processing of various characterization techniques.
 
 ##########################################################################################
+
 To install python and the necessary libraries:
 - Search 'miniconda' in Google and download the most recent version, or follow this link https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe
 - Install miniconda
@@ -11,6 +12,7 @@ To install python and the necessary libraries:
 - If an error message indicates the lack of some other library, you can install it in the same way
 
 ##########################################################################################
+
 To run the program:
 - Open the command prompt and type the following command, and press enter: cd folder_path (ex:cd C:\NaCA_Programs)
 - The folder path can be copied directly from windows explorer (use ctrl+C, Ctrl+V)
