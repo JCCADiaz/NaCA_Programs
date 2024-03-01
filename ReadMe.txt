@@ -9,6 +9,7 @@ To install python and the necessary libraries:
 
 
 To run the program:
+- Download the complete folder and if necessary unzip it
 - Open the command prompt and type the following command, and press enter: cd folder_path (ex:cd C:\NaCA_Programs)
 - The folder path can be copied directly from windows explorer (use ctrl+C, Ctrl+V)
 - Type the following command and press enter: python NaCA_tools.py
