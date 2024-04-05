@@ -48,22 +48,23 @@ def top_Abs_conv():
             
         n = float(get_n) # 2 Direct, 1/2 Indirect
 
-        data = pd.read_csv(path, sep=",", skiprows = 43, encoding = 'ISO-8859-1', names = ['Wavelength(nm)','x','y','Absorbance'], 
-                dtype={'Wavelength(nm)': 'int64',
-                        'x': 'int64',
-                        'y': 'string',
-                        'Absorbance': 'float64'})
+        ##########################################################
+        # data = pd.read_csv(path, sep=",", skiprows = 43, encoding = 'ISO-8859-1', names = ['Wavelength(nm)','x','y','Absorbance'], 
+        #         dtype={'Wavelength(nm)': 'int64',
+        #                 'x': 'int64',
+        #                 'y': 'string',
+        #                 'Absorbance': 'float64'})
 
-        data['factor'] = [-1 if '-' in i else 1 for i in data['y']]
+        # data['factor'] = [-1 if '-' in i else 1 for i in data['y']]
 
-        data = data.astype({'y': 'float64'})
-        data['y'] = data['y'].abs()
+        # data = data.astype({'y': 'float64'})
+        # data['y'] = data['y'].abs()
 
-        data['Absorbance'] = data['factor']*(data['y']+data['Absorbance']/1000)
+        # data['Absorbance'] = data['factor']*(data['y']+data['Absorbance']/1000)
+        ##########################################################
+        data = pd.read_csv(path, sep="\t", decimal=",", skiprows = 43, names = ['Wavelength(nm)','Absorbance'],
+                dtype={'Wavelength(nm)': 'float64', 'Absorbance': 'float64'})
 
-        #data = pd.read_csv(path, sep=",", skiprows = 43, encoding = 'ISO-8859-1', names = ['Wavelength(nm)','x','y','Absorbance'])
-        #data['Absorbance'] = data['y']+(data['Absorbance']/1000)
-        
         data['Normalized A'] = 1*(data['Absorbance'] - data['Absorbance'].min()) / (data['Absorbance'].max() - data['Absorbance'].min())
         
         data['hc/lambda(eV)'] = h*c/(data['Wavelength(nm)']*1E-9)
@@ -278,23 +279,23 @@ def top_Ref_conv():
             get_n = 0.5
             
         n = float(get_n) # 2 Direct, 1/2 Indirect
-        
-        data = pd.read_csv(path, sep=",", skiprows = 43, encoding = 'ISO-8859-1', names = ['Wavelength(nm)','x','y','Reflectance'], 
-                dtype={'Wavelength(nm)': 'int64',
-                        'x': 'int64',
-                        'y': 'string',
-                        'Reflectance': 'float64'})
+        ##########################################################
+        # data = pd.read_csv(path, sep=",", skiprows = 43, encoding = 'ISO-8859-1', names = ['Wavelength(nm)','x','y','Reflectance'], 
+        #         dtype={'Wavelength(nm)': 'int64',
+        #                 'x': 'int64',
+        #                 'y': 'string',
+        #                 'Reflectance': 'float64'})
 
-        data['factor'] = [-1 if '-' in i else 1 for i in data['y']]
+        # data['factor'] = [-1 if '-' in i else 1 for i in data['y']]
 
-        data = data.astype({'y': 'float64'})
-        data['y'] = data['y'].abs()
+        # data = data.astype({'y': 'float64'})
+        # data['y'] = data['y'].abs()
 
-        data['Reflectance'] = data['factor']*(data['y']+data['Reflectance']/10)/100
+        # data['Reflectance'] = data['factor']*(data['y']+data['Reflectance']/10)/100
+        ##########################################################
+        data = pd.read_csv(path, sep="\t", decimal=",", skiprows = 43, names = ['Wavelength(nm)','Reflectance'],
+                dtype={'Wavelength(nm)': 'float64', 'Reflectance': 'float64'})
 
-        #data = pd.read_csv(path, sep=",", skiprows = 43, encoding = 'ISO-8859-1', names = ['Wavelength(nm)','x','y','Reflectance'])
-        #data['Reflectance'] = (data['y']+(data['Reflectance']/10))/100
-        
         data['hc/lambda(eV)'] = h*c/(data['Wavelength(nm)']*1E-9)
         
         # F(R)= (1-R)^2/(2*R) 
@@ -492,8 +493,13 @@ def top_Tra_conv():
     
     ###############################
     def from_Tra_convert(path):
-        data = pd.read_csv(path, sep=",", skiprows = 43, encoding = 'ISO-8859-1', names = ['Wavelength(nm)','x','y','Transmittance(%)'])
-        data['Transmittance(%)'] = data['y']+(data['Transmittance(%)']/10)
+        ##########################################################
+        # data = pd.read_csv(path, sep=",", skiprows = 43, encoding = 'ISO-8859-1', names = ['Wavelength(nm)','x','y','Transmittance(%)'])
+        # data['Transmittance(%)'] = data['y']+(data['Transmittance(%)']/10)
+        ##########################################################
+        data = pd.read_csv(path, sep="\t", decimal=",", skiprows = 43, names = ['Wavelength(nm)','Transmittance(%)'],
+                dtype={'Wavelength(nm)': 'float64', 'Transmittance(%)': 'float64'})
+        
         data_out = data[['Wavelength(nm)', 'Transmittance(%)']].copy()
         return data_out
     
