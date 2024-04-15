@@ -295,7 +295,9 @@ def top_Ref_conv():
         ##########################################################
         data = pd.read_csv(path, sep="\t", decimal=",", skiprows = 43, names = ['Wavelength(nm)','Reflectance'],
                 dtype={'Wavelength(nm)': 'float64', 'Reflectance': 'float64'})
-
+        
+        data['Reflectance'] = data['Reflectance']/100
+        
         data['hc/lambda(eV)'] = h*c/(data['Wavelength(nm)']*1E-9)
         
         # F(R)= (1-R)^2/(2*R) 
