@@ -19,6 +19,7 @@ import EIS_Data_Convert_func as EISDCf
 import PEC_conversion_func as PECcf
 import UV_Vis_conversion_func as UVViscf
 import arduino_Temp_func as arduinoTf
+import arduino_Temp_func_max31856 as arduinoTf_max31856
 ###############################
 
 root = Tk()
@@ -96,6 +97,7 @@ UVVis_submenu.add_command(label="transmittance", command = UVViscf.top_Tra_conv)
 
 # add Exit menu item
 file_menu.add_command(label='Temperature measurement', command=arduinoTf.top_arduino_measure)
+file_menu.add_command(label='Temperature measurement_MAX31856', command=arduinoTf_max31856.top_arduino_measure)
 
 file_menu.add_separator()
 file_menu.add_command(label='Exit', command=root.destroy)
