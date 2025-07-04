@@ -399,7 +399,7 @@ def top_CG_Gas_Qantification_parameters():
             df_in, x = data_list(size)
             df_out = pd.DataFrame(columns=['time(min)', *gases], index=range(Ty))
             df_out['time(min)']=df_in['time(min)']
-            for gas in gases[:-1]: # disregards N2
+            for gas in gases[:]:
                 for i in range(len(df_in[gas])):
                     df_col = gas
                     df_val = df_in.loc[i,gas]
